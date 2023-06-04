@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/film.svg" type="image/x-icon">
+    <title>Cine Art | Login</title>
+    <link rel="stylesheet" href="./SCSS/style.css">
+    <link rel="stylesheet" href="./SCSS/login.css">
+
+</head>
+<body>
+  <section class="login">
+    <form class="forms" action="/login" method="post">
+      <h1 class="titulo">Cine Art | Login</h1>
+  
+      <label for="nome_usuario" class="label">Nome de Usuário:</label>
+      <input type="text" id="nome_usuario" name="nome_usuario" class="input">
+  
+      <label for="senha" class="label">Senha:</label>
+      <div class="password-input">
+        <input name="senha" type="password" id="password" class="input">
+        <div class="password-toggle" onclick="togglePasswordVisibility()">
+          <img src="/assets/eye-solid.svg" alt="Mostrar senha" class="eye-icon open-eye" />
+          <img src="/assets/eye-slash-solid.svg" alt="Esconder senha" class="eye-icon closed-eye" />
+        </div>
+      </div>
+  
+      <button class="button" id="btn" type="submit">Logar</button>
+    </form>
+  </section>
+    
+<script src="./Resources/passwordToggle.js"></script>
+<script src="./Function/loadTime.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+@charset "UTF-8";
+.password-input {
+  position: relative;
+  display: flex;
+}
+
+.password-input input {
+  padding-right: 30px; /* Adicione um espaçamento à direita para acomodar o ícone */
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.closed-eye {
+  display: none;
+}
+
+@media (max-width: 40rem) {
+  .password-toggle {
+    top: 49%;
+    right: 8px;
+    transform: translateY(-50%);
+  }
+  .password-input input {
+    padding-right: 10px; /* Adicione um espaçamento à direita para acomodar o ícone */
+  }
+}/*# sourceMappingURL=login.css.map */

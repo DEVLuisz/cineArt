@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/film.svg" type="image/x-icon" />
+    <title>Cine Art | Cadastro</title>
+    <link rel="stylesheet" href="./SCSS/style.css" />
+  </head>
+  <body>
+    <section class="login">
+      <form class="forms" action="add-usuario" method="post">
+        <h1 class="titulo">Cine Art | Cadastro</h1>
+        <label for="nome" class="label">Nome:</label>
+        <div class="required-field">
+          <input
+            name="nome"
+            type="text"
+            maxlength="15"
+            title="Máximo de caracteres: 15"
+            id="nome"
+            placeholder="Thiemi"
+            class="input"
+            required
+            onkeypress="return lettersOnly(event);"
+          />
+          <span class="field-message">Campo obrigatório</span>
+        </div>
+
+        <label for="sobrenome" class="label">Sobrenome:</label>
+        <div class="required-field">
+          <input
+            name="sobrenome"
+            type="text"
+            maxlength="20"
+            title="Máximo de caracteres: 20"
+            id="sobrenome"
+            placeholder="Lara"
+            class="input"
+            required
+            onkeypress="return lettersOnly(event);"
+          />
+          <span class="field-message">Campo obrigatório</span>
+        </div>
+
+        <label for="email" class="label">Email:</label>
+        <div class="required-field">
+          <input
+            name="email"
+            type="email"
+            maxlength="40"
+            title="Máximo de caracteres: 40"
+            id="email"
+            placeholder="ens-brunagordya@ugv.edu.br"
+            class="input"
+          />
+          <span class="field-message">Campo obrigatório</span>
+        </div>
+
+        <label for="cpf" class="label">CPF:</label>
+        <div class="required-field">
+          <input
+            type="number"
+            maxlength="11"
+            title="Máximo de caracteres: 11"
+            id="cpf"
+            name="cpf"
+            placeholder="12344111888"
+            class="input"
+            onkeypress="return numbersOnly(event);"
+          />
+          <span class="field-message">Campo obrigatório</span>
+        </div>
+
+        <label for="senha" class="label">Senha:</label>
+        <div class="required-field">
+          <input
+            name="senha"
+            type="password"
+            minlength="8"
+            title="Minimo de caracteres: 08"
+            id="senha"
+            placeholder="Hero@2023"
+            class="input"
+          />
+          <span class="field-message">Campo obrigatório</span>
+        </div>
+
+        <label for="confirmarSenha" class="label">Confirmar Senha:</label>
+        <div class="required-field">
+          <input
+            name="confirmarSenha"
+            type="password"
+            minlength="8"
+            title="Minimo de caracteres: 08"
+            id="confirmarSenha"
+            class="input"
+          />
+          <span class="field-message">Campo obrigatório</span>
+        </div>
+
+        <p id="forcaSenha"></p>
+        <div id="passwordStrength"></div>
+
+        <label for="endereco" class="label">Endereço:</label>
+        <div class="required-field">
+          <input
+            name="endereco"
+            type="text"
+            maxlength="30"
+            title="Máximo de caracteres: 30"
+            id="endereco"
+            placeholder="Rua dos Bobos - 0"
+            class="input"
+          />
+          <span class="field-message">Campo obrigatório</span>
+        </div>
+
+        <label for="telefone" class="label">Telefone:</label>
+        <div class="required-field">
+          <input
+            name="telefone"
+            type="number"
+            maxlength="8"
+            title="Máximo de caracteres: 8"
+            id="telefone"
+            placeholder="40028922"
+            class="input"
+            onkeypress="return numbersOnly(event);"
+          />
+          <span class="field-message">Campo obrigatório</span>
+        </div>
+
+        <label for="data_nascimento" class="label">Data de Nascimento:</label>
+        <div class="required-field">
+          <input
+            type="date"
+            id="data_nascimento"
+            name="data_nascimento"
+            placeholder="10/06/2003"
+            class="input"
+          />
+          <span class="field-message">Campo obrigatório</span>
+        </div>
+
+        <label for="nome_usuario" class="label">Nome de Usuário:</label>
+        <div class="required-field">
+          <input
+            type="text"
+            maxlength="20"
+            title="Máximo de caracteres: 20"
+            id="nome_usuario"
+            name="nome_usuario"
+            placeholder="Kagutsuchi"
+            class="input"
+            pattern="^[a-zA-Z-_]+$"
+            title="Somente letras, hifens e sublinhados são permitidos.(Necessário contém 8 ou mais caracteres)"
+            onkeypress="return lettersOnly(event);"
+          />
+          <span class="field-message">Campo obrigatório</span>
+        </div>
+
+        <button class="button" id="btn" type="submit">Cadastar</button>
+        <a href="login.html"
+          ><button class="button" id="btn-logar" type="button">Logar</button></a
+        >
+      </form>
+    </section>
+
+    <script src="./Resources/fieldInput.js"></script>
+    <script src="./Resources/passwordStrength.js"></script>
+    <script src="./Resources/passwordToggle.js"></script>
+    <script src="./Resources/passwordValidation.js"></script>
+    <script src="./Resources/userTextValidation.js"></script>
+    <script src="./Utils/lettersOnly.js"></script>
+    <script src="./Utils/numbersOnly.js"></script>
+    <script src="./Function/loadTime.js"></script>
+  </body>
+</html>

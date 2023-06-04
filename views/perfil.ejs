@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/react.svg" type="image/x-icon" />
+    <title>Cine Art | Perfil</title>
+    <link rel="stylesheet" href="/SCSS/perfil.css" />
+  </head>
+  <body>
+    <section>
+      <div class="color"></div>
+      <div class="color"></div>
+      <div class="color"></div>
+      <div class="box">
+        <div class="square" style="--i: 1"></div>
+        <div class="square" style="--i: 2"></div>
+        <div class="square" style="--i: 3"></div>
+        <div class="square" style="--i: 4"></div>
+        <div class="square" style="--i: 5"></div>
+        <div class="square" style="--i: 6"></div>
+        <div class="square" style="--i: 7"></div>
+        <div class="square" style="--i: 9"></div>
+        <div class="square" style="--i: 9"></div>
+        <div class="square" style="--i: 10"></div>
+        <form action="/perfil" method="POST"></form>
+        <div class="container">
+          <div class="form">
+            <form method="POST" action="/alterar?_method=PUT">
+              <h2>Perfil do Usuário</h2>
+
+              <div class="inputBox">
+                <label class="label" for="email">E-mail:</label>
+                <input
+                  class="input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  value="<%= usuario.email %>"
+                />
+              </div>
+
+              <div class="inputBox">
+                <label class="label" for="senha">Senha:</label>
+                <div class="password-input">
+                  <input
+                    class="input"
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    value="<%= usuario.senha %>"
+                  />
+                  <div class="password-toggle" onclick="togglePasswordVisibility()">
+                    <img src="/assets/eye-fill.svg" alt="Mostrar senha" class="eye-icon open-eye" />
+                    <img src="/assets/eye-off-fill.svg" alt="Esconder senha" class="eye-icon closed-eye" />
+                  </div>
+                </div>
+              </div>              
+
+              <div class="inputBox">
+                <label class="label" for="telefone">Telefone:</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="telefone"
+                  name="telefone"
+                  value="<%= usuario.telefone %>"
+                />
+              </div>
+
+              <div class="inputBox">
+                <label class="label" for="nome_usuario">Nome de Usuário:</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="nome_usuario"
+                  name="nome_usuario"
+                  value="<%= usuario.nome_usuario %>"
+                />
+              </div>
+            <div class="button-container">
+              <button class="button update-button" type="submit">
+                Atualizar
+              </button>
+            </form>
+              <form method="POST" action="/logout">
+                <button
+                  class="button logout-button"
+                  type="submit"
+                  name="logout"
+                >
+                  Logout
+                </button>
+              </form>
+              <form action="/card" method="get">
+                <button
+                  class="button"
+                  type="submit"
+                  name="card"
+                >
+                  Cartão
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function togglePasswordVisibility() {
+        const passwordInput = document.getElementById("senha");
+        const openEyeIcon = document.querySelector(".open-eye");
+        const closedEyeIcon = document.querySelector(".closed-eye");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          openEyeIcon.style.display = "none";
+          closedEyeIcon.style.display = "block";
+        } else {
+          passwordInput.type = "password";
+          openEyeIcon.style.display = "block";
+          closedEyeIcon.style.display = "none";
+        }
+      }
+
+      function medirTempoCarregamento() {
+      var inicioCarregamento = new Date().getTime();
+
+      window.addEventListener('load', function() {
+      var tempoCarregamento = new Date().getTime() - inicioCarregamento;
+      console.log('A página foi completamente carregada em ' + tempoCarregamento + ' milissegundos.');
+      var tempoCarregamentoSegundos = Math.round(tempoCarregamento / 1000);
+      console.log('A página foi completamente carregada em ' + tempoCarregamentoSegundos + ' segundos.');
+    });
+    }
+
+    medirTempoCarregamento();
+    </script>
+  </body>
+</html>
