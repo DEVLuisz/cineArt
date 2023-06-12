@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
-const db = require("./DB/conexao");
 const routes = require('./Routes/routes');
 const path = require('path');
 const methodOverride = require('method-override');
+const { lista } = require("./DB/Log/ADMs")
 
 app.use(methodOverride('_method'));
 app.use((req, res, next) => {
@@ -30,11 +30,6 @@ app.use(express.static(path.join(__dirname, 'public'), {
   }
 }));
 
-async function lista() {
-  await db.connect;
-  resultado = await db.query("SELECT * FROM ADMs");
-  console.log(resultado.rows);
-}
 lista();
 
 app.use('/', routes);

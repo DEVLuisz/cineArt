@@ -5,41 +5,52 @@ const bcrypt = require("bcrypt");
 const db = require("../DB/conexao");
 const { formatarCPF } = require("../Utils/regexpCPF");
 const { formatarTelefone } = require("../Utils/regexpTelefone");
+const { loginValidationRules } = require("../Auth/Private/loginValidationRules");
+const { validateLoginInput } = require("../Auth/Private/validateLoginInput");
+const { loginLimiter } = require("../Auth/Private/bruteForceProtection");
+const { apiLimiter } = require("../Auth/Private/rateLimiting");
 
 router.get("/login", function (req, res) {
   res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
-router.post("/login", async (req, res) => {
-  const { nome_usuario, senha } = req.body;
+router.post(
+  "/login",
+  loginLimiter,
+  loginValidationRules, 
+  validateLoginInput, 
+  apiLimiter,
+  async (req, res) => {
+    const { nome_usuario, senha } = req.body;
 
-  try {
-    const result = await db.query(
-      "SELECT * FROM usuarios WHERE nome_usuario = $1",
-      [nome_usuario]
-    );
+    try {
+      const result = await db.query(
+        "SELECT * FROM usuarios WHERE nome_usuario = $1",
+        [nome_usuario]
+      );
 
-    if (result.rows.length === 0) {
-      return res.status(401).send("Usuário não encontrado");
+      if (result.rows.length === 0) {
+        return res.status(401).send("Usuário não encontrado");
+      }
+
+      const user = result.rows[0];
+
+      const match = await bcrypt.compare(senha, user.senha);
+
+      if (!match) {
+        return res.status(401).send("Senha incorreta");
+      }
+
+      req.session.user = user;
+      req.session.senhaDigitada = senha;
+
+      res.redirect("/perfil");
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Ocorreu um erro");
     }
-
-    const user = result.rows[0];
-
-    const match = await bcrypt.compare(senha, user.senha);
-
-    if (!match) {
-      return res.status(401).send("Senha incorreta");
-    }
-
-    req.session.user = user;
-    req.session.senhaDigitada = senha;
-
-    res.redirect("/perfil");
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Ocorreu um erro");
   }
-});
+);
 
 router.get("/perfil", async (req, res) => {
   const user = req.session.user;

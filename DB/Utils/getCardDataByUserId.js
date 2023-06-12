@@ -14,8 +14,8 @@ async function getCardDataByUserId(userId) {
     const cardData = result.rows[0];
 
     return {
-      number: cardData.numero,
-      cardHolder: cardData.nome_titular,
+      numero: cardData.numero,
+      nome_titular: cardData.nome_titular,
       validade_mes: cardData.validade_mes,
       validade_ano: cardData.validade_ano,
       cvv: cardData.cvv

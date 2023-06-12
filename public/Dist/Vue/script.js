@@ -1,12 +1,8 @@
-/*
-See on github: https://github.com/muhammederdem/credit-card-form
-*/
-
 new Vue({
   el: "#app",
   data() {
     return {
-      currentCardBackground: Math.floor(Math.random()* 25 + 1), // just for fun :D
+      currentCardBackground: Math.floor(Math.random()* 25 + 1), 
       cardName: "",
       cardNumber: "",
       cardMonth: "",
@@ -43,7 +39,7 @@ new Vue({
       re = new RegExp('^9792')
       if (number.match(re) != null) return 'troy'
 
-      return "visa"; // default type
+      return "visa";
     },
 		generateCardNumberMask () {
 			return this.getCardType === "amex" ? this.amexCardMask : this.otherCardMask;
